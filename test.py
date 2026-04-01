@@ -23,10 +23,10 @@ else:
     system = platform.system()
     if system == "Windows":
         #Windows：寫在程式同資料夾
-        OUTPUT_FILE = Path(__file__).with_name("received.txt")
+        OUTPUT_FILE = Path(__file__).with_name("receivedpath.txt")
     else:
         #Liinux（含 Docker）：寫到 /app/data
-        OUTPUT_FILE = Path("/app/data/received.txt")
+        OUTPUT_FILE = Path("/app/data/receivedpath.txt")
 
 # 確保資料夾存在
 OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
