@@ -19,7 +19,7 @@ jobs:
           script: |
             cd /home/ubuntu/LearnCICD
             git pull origin main
-            docker stop myapi || true
-            docker rm myapi || true
-            docker build -t myapi .
-            docker run -d --name myapi -p 8000:8000 myapi
+            sudo docker stop myapi || true
+            sudo docker rm myapi || true
+            sudo docker build -t myapi .
+            sudo docker run -d --name myapi -p 8000:8000 myapi
