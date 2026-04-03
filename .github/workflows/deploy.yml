@@ -1,7 +1,9 @@
 name: Deploy to EC2
 
 on:
-  workflow_dispatch:   # 先手動觸發（安全）
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
