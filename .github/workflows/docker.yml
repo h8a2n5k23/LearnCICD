@@ -2,8 +2,8 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*'   # v1.0 / v2.0 都會觸發
 
 jobs:
   build-and-push:
@@ -17,7 +17,7 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/myapi:latest .
+        run: docker build -t h8a2n5k23/myapi:${{ github.ref_name }} .
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/myapi:latest
+        run: docker push h8a2n5k23/myapi:${{ github.ref_name }}

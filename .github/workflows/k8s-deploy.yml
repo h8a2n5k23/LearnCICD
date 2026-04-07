@@ -3,8 +3,8 @@ name: Deploy to local Kubernetes
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*'
 
 jobs:
   deploy-k8s:
@@ -14,12 +14,9 @@ jobs:
       - name: Check kubectl context
         shell: cmd
         run: |
-          kubectl config current-context
-          kubectl get nodes
+          kubectl set image deployment/myapi-deployment myapi=h8a2n5k23/myapi:${{ github.ref_name }}
 
       - name: Restart deployment
         shell: cmd
         run: |
-          kubectl apply -f deployment.yaml
-          kubectl rollout restart deployment myapi-deployment
-          kubectl rollout status deployment/myapi-deployment --timeout=60s
+          kubectl rollout status deployment/myapi-deployment --timeout=120s
