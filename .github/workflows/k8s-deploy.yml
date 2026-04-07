@@ -18,4 +18,4 @@ jobs:
         shell: cmd
         run: |
           kubectl rollout restart deployment myapi-deployment
-          kubectl rollout status deployment/myapi-deployment --timeout=120s
+          kubectl rollout status deployment/myapi-deployment --timeout=60s
