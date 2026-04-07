@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy-k8s:
-    runs-on: [self-hosted, windows, x64, local-k8s]
+    runs-on: [self-hosted]
 
     steps:
       - name: Check kubectl context
