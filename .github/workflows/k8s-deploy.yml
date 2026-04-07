@@ -2,23 +2,20 @@ name: Deploy to local Kubernetes
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   deploy-k8s:
-    runs-on: [self-hosted]
+    runs-on: self-hosted
 
     steps:
       - name: Check kubectl context
-        shell: powershell
+        shell: cmd
         run: |
           kubectl config current-context
           kubectl get nodes
 
       - name: Restart deployment
-        shell: powershell
+        shell: cmd
         run: |
-          kubectl rollout restart deployment/myapi-deployment
+          kubectl rollout restart deployment myapi-deployment
           kubectl rollout status deployment/myapi-deployment --timeout=120s
