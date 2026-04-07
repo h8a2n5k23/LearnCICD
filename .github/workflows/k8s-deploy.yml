@@ -2,6 +2,9 @@ name: Deploy to local Kubernetes
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy-k8s:
